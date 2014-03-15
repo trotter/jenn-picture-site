@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "underscore": "*",
     "express": "3.4.8",
     "hjs": "*",
     "reload": "*"

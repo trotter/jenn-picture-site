@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var directory = require('./routes/directory');
+var images = require('./routes/images');
 var http = require('http');
 var path = require('path');
 var reload = require('reload');
@@ -33,6 +34,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/directories', directory.list);
+app.get('/images', images.show);
 
 var server = http.createServer(app);
 
