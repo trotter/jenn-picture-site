@@ -10,10 +10,10 @@
     {{#files}}
       <li>
         {{#isDirectory}}
-        <a href="/directories?path={{basePath}}/{{path}}">{{path}}</a>
+        <a href="/directories?path={{basePath}}/{{path}}" x-link-type="directory">{{path}}</a>
         {{/isDirectory}}
         {{^isDirectory}}
-        <a href="/images?path={{basePath}}/{{path}}">{{path}}</a>
+        <a href="/images?path={{basePath}}/{{path}}" x-link-type="image">{{path}}</a>
         {{/isDirectory}}
       </li>
     {{/files}}

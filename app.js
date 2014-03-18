@@ -34,7 +34,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/directories', directory.list);
-app.get('/images', images.show);
+app.get('/imageBinary', images.image);
+app.get('/images', images.show)
 
 var server = http.createServer(app);
 

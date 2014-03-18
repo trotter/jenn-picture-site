@@ -1,6 +1,7 @@
+var utils = require('../utils');
 var fs = require('fs');
 var _ = require('underscore');
-var baseDir = process.env.BASE_DIR || "/Volumes/Public/Shared Pictures/uploaded/From Trotter's Old 13inch/Masters";
+var baseDir = utils.baseDir
 
 exports.list = function (req, res) {
   var path = req.query.path || '',
