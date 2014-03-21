@@ -11,8 +11,14 @@ var images = require('./routes/images');
 var http = require('http');
 var path = require('path');
 var reload = require('reload');
+var utils = require('./utils');
+var indexer = require('./indexer');
+var ds = require('./inMemoryDataStore');
 
 var app = express();
+
+var index = new indexer.Indexer(new ds.DataStore());
+index.create(utils.baseDir);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
