@@ -14,11 +14,14 @@ var reload = require('reload');
 var utils = require('./utils');
 var indexer = require('./indexer');
 var ds = require('./inMemoryDataStore');
+var _ = require('underscore');
 
 var app = express();
-
-var index = new indexer.Indexer(new ds.DataStore());
+var dataStore = new ds.DataStore();
+var index = new indexer.Indexer(dataStore);
 index.create(utils.baseDir);
+
+var image = new images.Images(dataStore);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -37,7 +40,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', _.bind(image.all, image));
 app.get('/users', user.list);
 app.get('/directories', directory.list);
 app.get('/imageBinary', images.image);

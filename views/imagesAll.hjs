@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>All years</h1>
+    <ul>
+    {{#years}}
+      <li>
+        <a href="/images/{{.}}">{{.}}</a>
+      </li>
+    {{/years}}
+    </ul>
+  </body>
+</html>
