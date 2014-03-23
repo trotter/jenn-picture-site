@@ -1,12 +1,16 @@
 exports.DataStore = function () {
-  this.data = {};
+  this.data = {unknown: []};
 };
 
 exports.DataStore.prototype = {
   add: function (dateTime, path) {
-    var date = dateTime.split(' ')[0].split(':');
-    var day = this.createPath(date);
-    day.push(path);
+    try {
+      var date = dateTime.split(' ')[0].split(':');
+      var day = this.createPath(date);
+      day.push(path);
+    } catch (e) {
+      this.data.unknown.push(path);
+    }
   },
 
   createPath: function (dateArray) {
