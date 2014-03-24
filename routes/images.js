@@ -12,8 +12,13 @@ exports.Images = function (dataStore) {
 exports.Images.prototype = {
   all: function (req, res) {
     var years = _.keys(this.dataStore.data);
-    console.log(years);
     res.render('imagesAll', {years: years});
+  },
+
+  year: function (req, res) {
+    var year = req.params.year;
+    var months = _.keys(this.dataStore.data[year]);
+    res.render('imagesAll', )
   }
 }
 
