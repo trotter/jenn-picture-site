@@ -18,13 +18,29 @@ exports.Images.prototype = {
   year: function (req, res) {
     var year = req.params.year;
     var months = _.keys(this.dataStore.data[year]);
-    res.render('imagesAll', )
+    res.render('imagesAll', {year: year, months: months});
+  },
+
+  month: function (req, res) {
+    var year = req.params.year;
+    var month = req.params.month;
+    var images = _.map(this.dataStore.data[year][month], function (v, k) {
+      return {day: k, dataImages: v};
+    });
+
+    var data = {
+      year: year,
+      months: month,
+      images: images
+    };
+
+    res.render('imagesAll', data);
   }
 }
 
 exports.image = function (req, res) {
-  var path = req.query.path || '',
-      img = fs.readFileSync(baseDir + path);
+  var path = req.query.path,
+      img = fs.readFileSync(path);
   res.writeHead(200, {'Content-Type': 'image/jpeg'});
   res.end(img, 'binary');
 };

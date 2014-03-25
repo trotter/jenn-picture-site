@@ -12,6 +12,21 @@
         <a href="/images/{{.}}">{{.}}</a>
       </li>
     {{/years}}
+    {{#months}}
+      <li>
+        <a href="/images/{{year}}/{{.}}">{{.}}</a>
+      </li>
+    {{/months}}
     </ul>
+    {{#images}}
+      {{day}}
+      <ul>
+        {{#dataImages}}
+          <li>
+            <img width="640" src="/imageBinary?path={{.}}" />
+          </li>
+        {{/dataImages}}
+      </ul>
+    {{/images}}
   </body>
 </html>

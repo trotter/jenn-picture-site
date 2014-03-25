@@ -41,7 +41,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', _.bind(image.all, image));
-app.get('/:year', _.bind(image.year, image));
+app.get('/images/:year', _.bind(image.year, image));
+app.get('/images/:year/:month', _.bind(image.month, image));
 app.get('/users', user.list);
 app.get('/directories', directory.list);
 app.get('/imageBinary', images.image);
